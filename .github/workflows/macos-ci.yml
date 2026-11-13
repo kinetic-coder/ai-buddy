@@ -1,0 +1,49 @@
+name: macOS CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master, 'feature/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift-tests:
+    name: Build and test Swift package
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Show Swift and Xcode versions
+        run: |
+          swift --version
+          xcodebuild -version
+      - name: Build (debug)
+        run: swift build
+      - name: Run unit tests
+        run: swift test --parallel
+      - name: Validate entitlements plist
+        run: plutil -lint Config/AIBuddy.entitlements
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Scan for secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
