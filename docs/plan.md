@@ -35,3 +35,13 @@ Status: planning; implementation and tests not yet executed.
 
 ## Branch and delivery
 Develop on feature/macos-codex-sandbox-poc from master. Do not commit directly to master. Open a PR for review and required checks.
+
+## Future milestone: iPhone and iPad companion experience
+- Reuse shared Swift usage models and provider interfaces across macOS, iOS and iPadOS.
+- Deliver an iPhone companion dashboard for use beside a developer's Mac, with configurable threshold and reset alerts and a Home Screen/Lock Screen widget where supported.
+- Explore optional Live Activity for active sessions, subject to platform rules.
+- Support iPad dashboard layouts and accessibility.
+- Investigate official account-level usage sources and secure sync so mobile works when the Mac is off; do not assume all subscription allowances are exposed.
+- Respect iOS background execution and WidgetKit refresh limits; show freshness timestamps and never promise continuous background polling.
+- Obtain explicit permission for notifications and any sync; keep the macOS v1 offline-first.
+- Test notification thresholds, duplicate suppression, stale data, widget timelines, permission denial and reconnect flows.
