@@ -20,7 +20,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
       - name: Show Swift and Xcode versions
@@ -31,6 +31,11 @@ jobs:
         run: swift build
       - name: Run unit tests
         run: swift test --parallel
+      - name: Build Xcode app with App Sandbox configuration
+        run: >-
+          xcodebuild -project AIBuddy.xcodeproj -scheme AIBuddy
+          -configuration Debug -destination 'platform=macOS'
+          CODE_SIGNING_ALLOWED=NO build
       - name: Validate entitlements plist
         run: plutil -lint Config/AIBuddy.entitlements
 
@@ -39,11 +44,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Scan for secrets
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
