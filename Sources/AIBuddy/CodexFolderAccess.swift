@@ -71,7 +71,7 @@ final class CodexFolderAccess: ObservableObject {
             let files = try FileManager.default.contentsOfDirectory(at: url,
                 includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
             isConnected = true
-            status = "Folder accessible (\\(files.count) top-level items). Usage parsing not yet enabled."
+            status = "Folder accessible (\(files.count) top-level items). Usage parsing not yet enabled."
         } catch {
             isConnected = false
             status = "Unable to read selected folder. Please reconnect."
