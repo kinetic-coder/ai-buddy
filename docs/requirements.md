@@ -6,9 +6,9 @@ Native macOS Swift/SwiftUI menu-bar app, offline-first, initially tracking local
 ## Functional
 - Show available token usage, provider-reported allowance used/remaining percentages, reset timestamps, data source and last-observed time.
 - Distinguish measured token counts, rate-limit percentages, and unknown or stale values. Never infer credit balance from token totals.
-- Read local Codex session files only after the user selects a folder. Never collect conversation text or credentials.
-- First-run onboarding offers Connect Codex and Skip. Settings supports connect, change folder, disconnect and separate deletion of saved history.
-- Use security-scoped bookmarks; handle revoked, moved or inaccessible folders after relaunch.
+- Do not read local ChatGPT or Codex files, discover app-installation paths, collect passwords, or retain conversation content.
+- Automatically locate the installed Codex executable and request structured rate-limit data through its documented local app-server protocol.
+- Never read or write Codex authentication files. Codex must own ChatGPT sign-in and token refresh; AI Buddy reports missing, stale, denied, or incompatible data explicitly.
 - Store minimal deduplicated usage snapshots locally with configurable retention.
 - Refresh on launch and initially every 60 seconds while running; optimise scanning and provide manual refresh.
 - Continue monitoring in the menu bar when dashboard closes; explicit Quit stops it. Optional launch at login.

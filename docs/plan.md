@@ -5,10 +5,10 @@ Status: Milestone 0 prototype source and initial smoke tests committed. Build, t
 ## Milestone 0: App Sandbox feasibility (first blocker)
 
 Initial source: `Sources/AIBuddy/`; entitlement example: `Config/AIBuddy.entitlements`; build notes: `docs/build.md`. This is not yet a validated sandboxed app.
-1. Create minimal SwiftUI macOS application with App Sandbox enabled and user-selected read-only file access entitlement.
+1. Create a minimal SwiftUI macOS application with App Sandbox and only the outgoing network entitlement required by the Codex app-server process.
 2. Provide first-run Connect Codex / Skip options; use NSOpenPanel to let the user select their Codex data directory.
 3. Persist a security-scoped bookmark in the app container. Resolve and use it only during authorised reads.
-4. Test reading nested session files, newly created files, relaunch, revoked permission, moved folder and disconnect.
+4. Test protocol decoding, missing or unavailable usage, Codex executable discovery, refresh, and signed sandbox behavior.
 5. Verify with a signed sandboxed macOS build. Document App Store distribution risks. Never bypass sandbox restrictions.
 
 **Exit criteria:** permission is optional; authorised read-only access works across relaunch; failures are explained and recoverable; disconnect stops reads and removes bookmark; no Codex files are modified; tests pass on macOS.
