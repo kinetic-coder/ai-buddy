@@ -1,8 +1,10 @@
 # AI Buddy macOS implementation plan
 
-Status: planning; implementation and tests not yet executed.
+Status: Milestone 0 prototype source and initial smoke tests committed. Build, tests and signed sandbox validation still pending on macOS.
 
 ## Milestone 0: App Sandbox feasibility (first blocker)
+
+Initial source: `Sources/AIBuddy/`; entitlement example: `Config/AIBuddy.entitlements`; build notes: `docs/build.md`. This is not yet a validated sandboxed app.
 1. Create minimal SwiftUI macOS application with App Sandbox enabled and user-selected read-only file access entitlement.
 2. Provide first-run Connect Codex / Skip options; use NSOpenPanel to let the user select their Codex data directory.
 3. Persist a security-scoped bookmark in the app container. Resolve and use it only during authorised reads.
