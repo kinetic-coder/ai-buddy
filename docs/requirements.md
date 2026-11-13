@@ -21,3 +21,10 @@ Native macOS Swift/SwiftUI menu-bar app, offline-first, initially tracking local
 - Native macOS UX: VoiceOver, keyboard navigation, focus visibility, text scaling, contrast, reduced motion and no colour-only meaning. Target WCAG 2.2 AA where applicable.
 - Mac App Store compatibility is a requirement, subject to sandbox feasibility and Apple's review.
 - Record decisions, test evidence and security implications in the repository.
+
+## Planned iOS and iPadOS companion apps
+- iPhone companion mode: glanceable usage while coding on a Mac, optional configurable usage-limit/reset alerts, and Home Screen widget; explore Lock Screen widgets and Live Activities where appropriate.
+- iPadOS dashboard using shared business logic and native tablet UI.
+- Mobile must remain useful with Mac off where supported account-level data is available; independently verify provider data access before promising live account balances.
+- Respect iOS background/widget refresh scheduling and user notification permissions. Clearly display data freshness and source.
+- Mobile sync, cloud connections and network access require separate privacy, threat-model and App Store review; macOS v1 remains offline-first.
